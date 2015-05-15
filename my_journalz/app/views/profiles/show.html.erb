@@ -35,9 +35,9 @@
 		<% @posts.each do |post| %>
 			<div class= "post">
 				<ul class= "post-ul">
-				  <li><%= post.title %></li>
+				  <li><%= post.title %></li><br>
 				  <li class= "post-body">
-
+				  	<%= post.body %>
 				    <% case post.post_type %>
 					    <% when "text" %>
 					      <%= post.body %>
