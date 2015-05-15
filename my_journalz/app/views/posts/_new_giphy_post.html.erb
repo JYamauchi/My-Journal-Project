@@ -1,0 +1,9 @@
+<!-- form, with inputs, hidden tag for post_type='giphy'  -->
+
+<%= form_for(Post.new(post_type: 'giphy')) do |f| %>
+
+  <%= f.label :title, "Post Title" %>
+  <%= f.text_field :title %>
+  <%= f.label :body, "Giphy Search Term" %>
+  <%= f.text_field :body %>
+<% end %>

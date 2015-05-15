@@ -1,0 +1,11 @@
+<%= form_for [current_user, @profile, @post], url: user_profile_posts_path(current_user, @profile, @post)  do |f| %>
+  <p>
+  	<%= f.label :title %><br>
+  	<%= f.text_field :title %>
+    <%= f.label :body %><br>
+    <%= f.text_field :body %>
+  </p>
+  <p>
+    <%= f.submit %>
+    </p>
+ <% end %>

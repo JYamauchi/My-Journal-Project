@@ -7,8 +7,28 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<nav>
+		<ul>
+			<li><a href="/"> My Journalz </a> </li>
+			<li class= "nav-li"><% if current_user %>
+                  <%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>
+                <% else %>
+          	      <a href='/users/sign_in'>Sign In</a>
+                <% end %>
+            </li>
+	        <li class= "nav-li"><% if current_user %>
+	        		<a href= "/users/<%= current_user.id %>/profile">Your Profile</a>
+	        	<% else %>
 
-<%= yield %>
+	        	<% end %>
+	        </li>
+	        <li class= "nav-li">
+	        	<h4>Profile's Id Number: <%= current_user.profile.id %></h4>
+	        </li>
+	    </ul>
+    </nav>
+
+	<%= yield %>
 
 </body>
 </html>
