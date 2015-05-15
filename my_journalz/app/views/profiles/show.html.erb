@@ -1,0 +1,64 @@
+
+<h2> Name: <%= current_user.profile.name %> </h2>
+<h2> Interest: <%= current_user.profile.interests %></h2>
+<h2> About me: <%= current_user.profile.about_me %></h2>
+
+<div class="select-post">
+	<h3>Select to create a post</h3>
+	<select name="post-option">
+	  <option value="">Please select</option>
+	  <option value="text" selected="selected">Simple Text</option>
+	  <option value="giphy">Giphy Slideshow</option>
+	  <option value="3">Import Images</option>
+	  <option value="4">Import Video</option>
+	</select>
+</div>
+
+<%=render '/posts/form' %>
+<%=render '/posts/new_giphy_post' %>
+
+<%= form_for [@user, @profile, @post], url: user_profile_posts_path(@user, @post)  do |f| %>
+  <p>
+  	<%= f.label :title %><br>
+  	<%= f.text_field :title %>
+    <%= f.label :body %><br>
+    <%= f.text_field :body %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
+<div class="post-content">
+	<h1>Your Posts</h1>
+	<% if @posts.any? %>
+		<% @posts.each do |post| %>
+			<div class= "post">
+				<ul class= "post-ul">
+				  <li><%= post.title %></li>
+				  <li class= "post-body">
+
+				    <% case post.post_type %>
+					    <% when "text" %>
+					      <%= post.body %>
+					    <% when "giphy" %>
+					      <%= image_tag("http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&rating=pg&tag=#{post.body}") %>
+				     <% end %>
+
+				   </li>
+				</ul>
+			</div>
+		<% end %>
+	<% end %>
+</div>
+
+<%= javascript_include_tag "profiles" %>
+
+<script>
+  $(document).ready( function(){
+  	console.log("testing");
+  	initializePostOptions();
+  	showPostOption();
+  })
+</script>
+

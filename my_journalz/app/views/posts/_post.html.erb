@@ -1,0 +1,16 @@
+<div class="post">
+  <h2 class="post-title"><%= post.title %></h2>
+  <p class="post-body"><%= post.body %></p>
+  <% if current_user %>
+    <p class="post-author">By <%= profile.name %></p>
+  <% end %>
+  <p class="post-links">
+    <%= link_to_unless_current 'View', post %>
+    <% if can? :update, post %>
+      | <%= link_to 'Edit', edit_post_path(post) %>
+    <% end %>
+    <% if can? :destroy, post %>
+      | <%= link_to 'Delete', post, method: :delete, data: {confirm: 'Are you sure?'} %>
+    <% end %>
+  </p>
+</div>

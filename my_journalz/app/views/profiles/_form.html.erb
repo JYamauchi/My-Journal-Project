@@ -1,0 +1,20 @@
+<p>
+<%= form_for new_user_profile_path, url: user_profile_path(current_user, @profile) do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <br><br>
+  <%= f.label :photo_url %>
+  <%= f.text_field :photo_url %>
+  <br><br>
+  <%= f.label :hometown %>
+  <%= f.text_field :hometown %>
+  <br><br>
+  <%= f.label :interests %>
+  <%= f.text_field :interests %>
+  <br><br>
+  <%= f.label :about_me %>
+  <%= f.text_field :about_me %>
+  <br><br>
+  <%= f.submit "Update" %>
+<% end %>
+</p>

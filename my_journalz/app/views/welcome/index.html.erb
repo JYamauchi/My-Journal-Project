@@ -1,0 +1,12 @@
+<h1>Welcome to My JournalZ </h1>
+
+<% if current_user %>
+  	<h2>User's ID</h2>
+	<h2><%= current_user.id %></h2>
+<% else %>
+    <h2> Empty Page and please sign in</h2>
+<% end %>
+
+
+
+
